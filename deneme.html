@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>5D Kart Carousel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg: #0f1113;
+        --glass: rgba(255, 255, 255, 0.06);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --accent: rgba(255, 255, 255, 0.9);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 11px;
+        background: url("https://file.garden/aCTjXiikymDr1qHZ/Ads%C4%B1z%20tasar%C4%B1m%20(2).png")
+          no-repeat center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        height: 100%;
+      }
+      @media screen and (min-width: 768px) {
+        body {
+          background: url("https://file.garden/aCTjXiikymDr1qHZ/%2530%20%E2%80%98a%20varan%20indirimler%20(1).png")
+            no-repeat center/cover;
+        }
+      }
+      .phone {
+        width: 90vw;
+        height: 90vh;
+        max-width: 360px;
+        max-height: 720px;
+        border-radius: 48px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px) saturate(120%);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        padding: 28px 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+
+      #page-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem; /* Hafif küçültüldü */
+        font-weight: 700;
+        color: var(--accent);
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        height: 50px;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        white-space: nowrap;
+      }
+      #page-title.visible {
+        opacity: 1;
+      }
+      #page-title i {
+        font-size: 1.7rem;
+      }
+      #page-title img {
+        height: 28px;
+        width: auto;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+      }
+
+      .viewport {
+        width: 100%;
+        height: 60vh;
+        max-height: 480px;
+        perspective: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .carousel {
+        width: 300px;
+        height: 400px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 230px;
+        height: 360px;
+        margin: -180px 0 0 -115px;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        backface-visibility: hidden;
+        transition: transform 0.3s;
+      }
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .card:hover {
+        transform: scale(1.03);
+      }
+
+      .controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+        position: relative;
+        z-index: 100;
+      }
+      .btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        min-width: 40px;
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <div id="page-title"></div>
+
+      <div class="viewport">
+        <div class="carousel" id="carousel">
+          <a
+            class="card"
+            data-i="0"
+            href="https://www.pnrcantaksesuar.com/sayfa/hakkimizda"
+          >
+            <img
+              src="https://file.garden/aCTjXiikymDr1qHZ/Ads%C4%B1z%20tasar%C4%B1m%20(3).png"
+              alt="Hakkımızda"
+            />
+          </a>
+          <a class="card" data-i="1" href="https://www.pnrcantaksesuar.com/">
+            <img
+              src="https://file.garden/aCTjXiikymDr1qHZ/site.jpg"
+              alt="Web Sitemiz"
+            />
+          </a>
+          <a
+            class="card"
+            data-i="2"
+            href="https://www.trendyol.com/magaza/pnraksesuar-m-993236?sst=0"
+          >
+            <img
+              src="https://file.garden/aCTjXiikymDr1qHZ/trendyol.jpg"
+              alt="Trendyol"
+            />
+          </a>
+          <a
+            class="card"
+            data-i="3"
+            href="https://api.whatsapp.com/send/?phone=905330287653&text&type=phone_number&app_absent=0"
+          >
+            <img
+              src="https://file.garden/aCTjXiikymDr1qHZ/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202025-08-12%20141418.png"
+              alt="WhatsApp"
+            />
+          </a>
+          <a
+            class="card"
+            data-i="4"
+            href="https://www.pnrcantaksesuar.com/kategori/yeni-gelenler"
+          >
+            <img
+              src="https://file.garden/aCTjXiikymDr1qHZ/Modern%20Neutral%20Mockup%20Website%20Design%20Services%20Promotion%20Instagram%20Story%20(2).jpg"
+              alt="En Yeniler"
+            />
+          </a>
+          <a
+            class="card"
+            data-i="5"
+            href="https://www.instagram.com/pnrcantaksesuar/"
+          >
+            <img
+              src="https://file.garden/aCTjXiikymDr1qHZ/WhatsApp%20G%C3%B6rsel%202025-08-12%20saat%2015.48.57_632bf584.jpg"
+              alt="Instagram"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="prev">◀</button>
+        <button class="btn" id="next">▶</button>
+      </div>
+    </div>
+    <script>
+      const carousel = document.getElementById("carousel");
+      const cards = Array.from(carousel.querySelectorAll(".card"));
+      const n = cards.length;
+      let angle = 0;
+      const radius = 300;
+
+      const pageTitle = document.getElementById("page-title");
+      const pageData = [
+        { icon: '<i class="fas fa-info-circle"></i>', text: "Hakkımızda" },
+        {
+          icon: '<img src="https://file.garden/aCTjXiikymDr1qHZ/mail_logo.webp" alt="logo">',
+          text: "Web Sitemiz",
+        },
+        { icon: '<i class="fas fa-shopping-bag"></i>', text: "Trendyol" },
+        { icon: '<i class="fab fa-whatsapp"></i>', text: "Whatsapp" },
+        {
+          icon: '<img src="https://file.garden/aCTjXiikymDr1qHZ/mail_logo.webp" alt="logo">',
+          text: "En Yeniler",
+        },
+        { icon: '<i class="fab fa-instagram"></i>', text: "İnstagram" },
+      ];
+
+      function layout() {
+        for (let i = 0; i < n; i++) {
+          const theta = (360 / n) * i;
+          cards[
+            i
+          ].style.transform = `rotateY(${theta}deg) translateZ(${radius}px)`;
+        }
+        update();
+      }
+
+      function update() {
+        carousel.style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
+
+        const rawIndex = Math.round(-angle / (360 / n));
+        const currentIndex = ((rawIndex % n) + n) % n;
+
+        const currentData = pageData[currentIndex];
+        if (currentData) {
+          pageTitle.innerHTML = `${currentData.icon} <span>${currentData.text}</span>`;
+        }
+      }
+
+      document.getElementById("next").addEventListener("click", () => {
+        angle -= 360 / n;
+        update();
+      });
+
+      document.getElementById("prev").addEventListener("click", () => {
+        angle += 360 / n;
+        update();
+      });
+
+      let rotationInterval;
+      function startAutoRotation() {
+        rotationInterval = setInterval(() => {
+          angle -= 360 / n;
+          update();
+        }, 6000);
+      }
+
+      window.addEventListener("load", () => {
+        layout();
+        startAutoRotation();
+        carousel.addEventListener("mouseenter", () =>
+          clearInterval(rotationInterval)
+        );
+        carousel.addEventListener("mouseleave", startAutoRotation);
+
+        setTimeout(() => pageTitle.classList.add("visible"), 100);
+      });
+    </script>
+  </body>
+</html>
